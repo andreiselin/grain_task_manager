@@ -1,0 +1,16 @@
+#add_checklist_body_block input[type=text] {
+    width: 500px;
+}
+
+#add_checklist_item_list {
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 2px dotted #353535;
+    border-bottom: 2px dotted #353535;
+}
+.add_checklist_item {
+    padding:5px 0;
+}
+.add_checklist_item:hover {
+    background:rgba(0,0,0,0.1);
+}

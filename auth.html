@@ -1,0 +1,30 @@
+<div ng-show="show_load" id="loading_plane"><div id="loading_label" class="big">Загрузка</div></div>
+<link href="/css/auth.css" rel="stylesheet" type="text/css" />
+<div id="wrapper">
+    <div id="status_bar"></div>
+    <div id="body">
+        <div id="auth_wrapper" class="body_block">
+            <div>
+                <img src="/images/interface/grain_logo_190.png" />
+            </div>
+            <div>
+                <label for="user_id">
+                    Выберите пользователя:<br />
+                    <input ng-model="user_name" id="user_id" name="user_name" ng-change="show_list = 1" type="text" value="" placeholder="Начните набирать имя" />{{index}}
+                </label>
+                <ul class="dropdown_list" ng-show="user_name && show_list && obj.index" id="auth_dropdown_list">
+                    <li data-length="{{obj.index = $index+1}}" ng-repeat="user in users|filter:user_name" ng-click="setUser(user);">{{user.first_name}} {{user.last_name}}</li>
+                </ul>
+            </div>
+            <div>
+                <label for="user_pwd">
+                    и введите пароль:<br />
+                    <input ng-model="user_pwd" type="password" id="user_pwd"/>
+                </label>
+            </div>
+            <div>
+                <span class="button" ng-click="auth()">Войти</span>
+            </div>
+        </div>
+    </div>
+</div>

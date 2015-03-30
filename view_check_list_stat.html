@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+
+    <meta charset="UTF-8">
+    <title>Статистика по чеклисту</title>
+
+
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/jquery_cookie.js"></script>
+
+
+    <script src="../scripts/global.js"></script>
+    <link href="../!_old/global.css" rel="stylesheet" type="text/css" />
+
+
+    <!--<script src="task.js"></script>-->
+    <link href="check_list_stat.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+<div id="wrapper">
+
+    <!-- общая для всех экранов строка. здесь будут кнопки и значок оповещения -->
+    <div id="status_bar">
+
+    </div>
+
+    <!-- враппер текущего экрана -->
+    <div id="body">
+        <div class="body_block">
+            <h1>Статистика проверок</h1>
+            <div class="big">Название чеклиста</div>
+            <div id="view_check_list_form">
+                С <input type="text" value="" placeholder="старт периода" />
+                по <input type="text" value="" placeholder="конец периода" />
+                <span class="button">Загрузить</span>
+            </div>
+        </div>
+        <div class="body_block_header">Результаты сортировки (4 проверки)</div>
+        <div class="body_block">
+
+            <div id="view_check_list_info">
+                Показана выборка с 15.10.2012 по 18.12.2015.
+                <p class="small">Даты проверок:
+                    <span class="button">16.10.2012</span>,
+                    <span class="button">20.11.2013</span>,
+                    <span class="button">21.12.2013</span>,
+                    <span class="button">12.03.2014</span>
+                </p>
+            </div>
+
+
+            <div class="breaker"></div>
+
+
+            <table class="grain_table">
+                <thead>
+                    <tr>
+                        <td>Пункт</td>
+                        <td>Отметка</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Готовность принятия олимпиады</td>
+                        <td>
+                            2.1
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Настройка всех инструментов</td>
+                        <td>
+                            4.7
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Клапаны выкручены в положение 10</td>
+                        <td>
+                            5
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div><!-- / body - враппер экрана -->
+</div><!-- / wrapper - враппер всех элементов -->
+</body>
+</html>

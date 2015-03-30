@@ -1,0 +1,164 @@
+
+<link href="css/edit_task.css" rel="stylesheet" type="text/css" />
+    <div id="wrapper">
+
+        <!-- общая для всех экранов строка. здесь будут кнопки и значок оповещения -->
+        <div id="status_bar">
+
+        </div>
+
+        <!-- враппер текущего экрана -->
+        <div id="body">
+            <div id="edit_task" class="body_block">
+
+                <h1>Создание / Редактирование задачи</h1>
+                <div class="breaker"></div>
+                <form name="newTask">
+                <div id="edit_task_form">
+                    <div class="edit_task_form_line">
+                        <span class="small">Заголовок задачи</span><br />
+                        <input ng-model="task.title" name="title" type="text" value="" placeholder="Заголовок задачи" id="edit_task_form_title_input" />
+                    </div>
+
+
+                    <!-- если текущий пользователь - менеджер и выше (role > 1) -->
+                    <div class="edit_task_form_line">
+                        <span class="small">Ответственный сотрудник</span><br />
+                        <input ng-model="responsible_name" name="responsible_name" ng-change="task.responsible = 0" type="text" value="" placeholder="Начните набирать имя" />
+                        <ul class="dropdown_list" ng-show="responsible_name && !task.responsible">
+                            <li ng-repeat="user in users|filter:responsible_name" ng-click="setResponsible(user);">{{user.first_name}} {{user.last_name}}</li>
+                        </ul>
+                    </div>
+
+                    <!-- initiator - это id текущего пользователя -->
+
+                    <!-- ТЕКСТОВОЕ ОПИСАНИЕ ЗАДАЧИ, контент -->
+                    <div class="edit_task_form_line">
+                        <span class="small">Текст задания</span><br />
+                        <textarea ng-model="task.content" name="content" id="edit_task_form_content" placeholder="Пояснения к заголовку, несколько строк"></textarea>
+                    </div>
+
+                    <!-- ИЗОБРАЖЕНИЕ, прикрепленное к задаче -->
+                    <div class="edit_task_form_line">
+                        <span class="small">Картинка для наглядного сопрововождения задачи, необязательно{{picFile}}</span><br />
+                        <input type="file" ng-file-select="" ng-model="task.picFile" name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)" required="" />
+                    </div>
+
+                    <!-- ДАТА ВЫПОЛНЕНИЯ -->
+                    <!-- меняет класс в зависимости от того, превышен ли срок на данный момент -->
+                    <div class="edit_task_form_line">
+                        <span class="small">Дата и время когда задача должна быть выполнена</span><br />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="task.dt" is-open="opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Закрыть" current-text="Сегодня" clear-text="Очистить"/>
+                                      <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                      </span>
+
+                                </p>
+                            </div>
+                            <div class="col-md-5">
+                                <select ng-model="task.hours" style="margin-top: 10px;">
+                                    <option value="00">00</option>
+                                    <option value="01">01</option>
+                                    <option value="02">02</option>
+                                    <option value="03">03</option>
+                                    <option value="04">04</option>
+                                    <option value="05">05</option>
+                                    <option value="06">06</option>
+                                    <option value="07">07</option>
+                                    <option value="08">08</option>
+                                    <option value="09">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                </select>
+                                :
+                                <select ng-model="task.minutes" style="margin-top: 10px;">
+                                    <option value="00">00</option>
+                                    <option value="05">05</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="25">25</option>
+                                    <option value="30">30</option>
+                                    <option value="35">35</option>
+                                    <option value="40">40</option>
+                                    <option value="45">45</option>
+                                    <option value="50">50</option>
+                                    <option value="55">55</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="breaker"></div>
+
+
+
+                    <!-- СПИСОК ПОЛЬЗОВАТЕЛЕЙ, отмеченных для оповещения о создании этой задачи -->
+                    <!-- если пользователь - менеджер, делаем ссылку на страницу task_list, отсортированную по этому пользователю -->
+                    <div class="edit_task_form_line">
+                        <span class="small">Кого оповестить о создании этой задачи?</span><br />
+                        <input ng-model="name" type="text" value="" placeholder="Начните набирать имя" /> <span class="button">ok</span>
+                        <ul class="dropdown_list" ng-show="obj.length && name">
+                            <li data-length="{{obj.length = $index+1}}"  ng-repeat="user in users|map:obj.commnetNotified:true|filter:name" ng-click="addNotified(user.id);">{{user.first_name}} {{user.last_name}}</li>
+                        </ul>
+                        <div id="edit_task_form_notified_users">
+                            <span class="small">Будут оповещены:</span><br />
+                            <a ng-repeat="user in users|map:obj.commnetNotified"><span class="edit_task_form_notified_user">{{user.first_name}} {{user.last_name}}</span>
+                                <span class="button" ng-click="deleteNotified(user.id)">x</span><span ng-if="!$last">,</span></a>
+                        </div>
+                    </div>
+
+
+
+                    <div class="breaker"></div>
+
+
+                    <!-- только для директора, role > 2 -->
+                    <div class="edit_task_form_line">
+                        <span class="small">Что сделать с этой задачей:</span><br />
+                        <p>
+                            <input ng-model="task.status" type="radio" value="0" checked> Сохранить для обсуждения и выполнения<br />
+                            <input ng-model="task.status" type="radio" value="1"> Сохранить как шаблонную задачу для регламента
+                        </p>
+                    </div>
+
+
+
+                    <div class="breaker"></div>
+
+
+
+                    <div class="edit_task_form_line">
+                        <div class="big_button" ng-click="saveTask()">Сохранить</div>
+                    </div>
+                </div>
+
+                </form>
+
+            </div>
+
+
+
+
+
+<!-- / конец задачи -->
+    </div><!-- / wrapper - враппер всех элементов -->
+</div>

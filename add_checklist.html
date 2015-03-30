@@ -1,0 +1,28 @@
+
+<link href="css/add_checklist.css" rel="stylesheet" type="text/css" />
+<div ng-show="show_load" id="loading_plane"><div id="loading_label" class="big">Загрузка</div></div>
+<div id="wrapper">
+
+        <!-- общая для всех экранов строка. здесь будут кнопки и значок оповещения -->
+        <div id="status_bar" ng-include="'status_bar.html'"></div>
+
+        <!-- враппер текущего экрана -->
+        <div id="body">
+            <div id="add_checklist_body_block" class="body_block">
+                <h1>Создание чеклиста</h1>
+                <div id="add_checklist_item_list">
+                    <div class="add_checklist_item" ng-repeat="(key, value) in new_checklist | orderBy:predicate:reverse">
+                        {{value.pos}}
+                        <input type="checkbox" ng-model="value['active']" /> Вкл
+                        <input type="text" ng-model="value['text']" />
+                        <span class="button" ng-click="move_new_checklist_item('up',key)">&uarr;</span>
+                        <span class="button" ng-click="move_new_checklist_item('down',key)">&darr;</span>
+                        <span class="button" ng-click="delete_new_checklist_item(key)">X</span>
+                    </div>
+                </div>
+                <span class="button" ng-click="add_new_checklist_item()">Add</span>
+            </div>
+        </div>
+    
+</div>
+

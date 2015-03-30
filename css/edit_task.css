@@ -1,0 +1,12 @@
+.edit_task_form_line{
+    margin-bottom:20px;
+}
+
+#edit_task_form_title_input {
+    width:500px;
+}
+
+#edit_task_form_content{
+    width:500px;
+    height:150px;
+}

@@ -1,0 +1,59 @@
+<body>
+<div ng-show="show_load" id="loading_plane"><div id="loading_label" class="big">Загрузка</div></div>
+    <link href="css/profile.css" rel="stylesheet" type="text/css" />
+    <div id="wrapper">
+
+        <!-- общая для всех экранов строка. здесь будут кнопки и значок оповещения -->
+        <div id="status_bar" ng-include="'status_bar.html'">
+
+        </div>
+
+        <!-- враппер текущего экрана -->
+        <div id="body">
+            <div class="body_block" ng-repeat="user in users|filter:{id:current_user}">
+                <div id="profile_user_pic">
+                    <img ng-src="images/users/{{user.img||'0.jpg'}}"/>
+                </div><div id="profile_user_info">
+                    <h1 id="profile_user_name" >{{user.first_name}} {{user.last_name}}</h1>
+                    <span class="button" ng-click='changeStatus()'>{{status === '1'?'Завершить работу':'Начать работу '}}</span>
+                </div>
+            </div>
+            <div class="body_block_header">Мои задачи</div>
+            <div id="profile_tasks" class="body_block">
+
+                <!-- как лучше передать идентификатор задачи для просмотра, через кукис ? -->
+                <a ng-href="#/view_task/{{task.id}}" ng-repeat="task in tasks">
+                    <div class="profile_task">
+                        <div class="big">
+                            {{task.title}}
+                        </div>
+                        <div class="profile_task_term">
+                            <span class="small">Срок выполнения:</span><br />
+                            <!-- здесь пишется дата если срок - не сегодня -->
+                            <span ng-if="!checkDate(task.time_term)">{{task.time_term|date:'yyyy-MM-dd HH:mm'}}</span>
+                            <span ng-if="checkDate(task.time_term)">{{task.time_term|date:'HH:mm'}}</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- как лучше передать идентификатор задачи для просмотра, через кукис ? -->
+                <!--<a href="../task">-->
+                    <!--<div class="profile_task">-->
+                        <!--<div class="big">-->
+                            <!--Переложить бумаги-->
+                        <!--</div>-->
+                        <!--<div class="profile_task_term">-->
+                            <!--<span class="small">Срок выполнения:</span><br />-->
+                            <!--&lt;!&ndash; здесь пишется дата если срок - не сегодня &ndash;&gt;-->
+                            <!--18:00-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</a>-->
+
+
+            </div>
+
+
+        </div><!-- / body - враппер экрана -->
+    </div><!-- / wrapper - враппер всех элементов -->
+</body>

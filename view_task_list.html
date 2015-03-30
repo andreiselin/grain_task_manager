@@ -1,0 +1,132 @@
+<link href="css/view_task_list.css" rel="stylesheet" type="text/css" />
+<div ng-show="show_load" id="loading_plane"><div id="loading_label" class="big">Загрузка</div></div>
+<body>
+    <div id="wrapper">
+
+        <!-- общая для всех экранов строка. здесь будут кнопки и значок оповещения -->
+        <div id="status_bar" ng-include="'status_bar.html'">
+
+        </div>
+
+        <!-- враппер текущего экрана -->
+        <div id="body">
+            <div class="body_block" style="overflow: visible">
+                <h1 id="task_list_header">Сортировка задач</h1>
+
+                <div class="breaker"></div>
+
+                <div id="task_sort_form">
+                    <div>
+                        <span class="small">Ответственный</span>:
+                        <input ng-model="responsible_name" name="responsible_name" ng-change="responsible = 0" type="text" value="" placeholder="Начните набирать имя" />
+                        <ul class="dropdown_list" style="margin-left: 111px;" ng-show="responsible_name && !responsible">
+                            <li ng-repeat="user in users|filter:responsible_name" ng-click="setResponsible(user);">{{user.first_name}} {{user.last_name}}</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="col-md-1" style="margin-top: 15px"><span class="small">Дата</span>:с</div>
+                         <div class="col-md-5">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="start" is-open="openedStart" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Закрыть" current-text="Сегодня" clear-text="Очистить"/>
+                                              <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openStart($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                              </span>
+                                </p>
+                            </div>
+                        <div class="col-md-1" style="margin-top: 15px">по</div>
+                        <div class="col-md-5">
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="end" is-open="openedEnd" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Закрыть" current-text="Сегодня" clear-text="Очистить"/>
+                                              <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="openEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                              </span>
+                        </p>
+
+                    </div>
+                        <div><span class="button" ng-click="defaultTime()">Сегодня</span>  <span ng-click="clearTime()" class="button">Все время</span></div>
+                    </div>
+                    <div>
+                        <span class="small">Готовность</span>:
+                        <select ng-model="status">
+                            <option value="">Все</option>
+                            <option value="2">Завершена</option>
+                            <option value="1">Незавершена</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="breaker"></div>
+
+                <span class="button" ng-click="sendFilter()">Сортировать</span>
+            </div>
+            <div class="body_block_header">Результаты сортировки</div>
+            <div class="body_block">
+
+                <table class="grain_table">
+                    <thead>
+                        <tr>
+                            <td>
+                                <span class="small">Срок</span>
+                            </td>
+                            <td>
+                                <span class="small">Задача</span>
+                            </td>
+                            <td>
+                                <span class="small">Ответственный</span>
+                            </td>
+                            <td>
+                                <span class="small">Создана</span>
+                            </td>
+                            <td>
+                                <span class="small">Состояние</span>
+                            </td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="task in tasks">
+                            <td>
+                                <span class="small">{{task.time_term|date:'yyyy.MM.dd'}} {{task.time_term|date:'HH:mm'}}</span>
+                            </td>
+                            <td>
+                                <a href="#/view_task/{{task.id}}" class="small">{{task.title}}</a>
+                            </td>
+                            <td>
+                                <span ng-repeat="user in users|filter:{id:task.responsible}">{{user.first_name}} {{user.last_name}}</span>
+                            </td>
+                            <td>
+                                <!--<span class="small">{{task.time_term|date:'yyyy.MM.dd'}}</span><br />-->
+                            </td>
+                            <td>
+                                <span class="small">{{task.status ==="1"? 'Незавершена':'Завершена'}}</span>
+                            </td>
+                        </tr>
+                        <!--<tr>-->
+                            <!--<td>-->
+                                <!--<span class="small">10.02.2015 12:00</span>-->
+                            <!--</td>-->
+                            <!--<td>-->
+                                <!--<a href="../!_old/task" class="small">Проверить механизм работы вакуумных поглотителей.</a>-->
+                            <!--</td>-->
+                            <!--<td>-->
+                                <!--Попандопуло Никифор-->
+                            <!--</td>-->
+                            <!--<td>-->
+                                <!--<span class="small">10.02.2015</span><br />10:00-->
+                            <!--</td>-->
+                            <!--<td>-->
+                                <!--<span class="small">Завершена</span>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+                    </tbody>
+
+
+                </table>
+                <div id="task_list_page_numbers" ng-if="pages.count > 1">
+                    <span ng-class="n === pages.current?'':'button'" ng-click="setPage(n)" ng-repeat="n in [] | range:pages.count">{{n}}<a ng-if="!$last">,</a></span>
+                </div>
+
+            </div>
+        </div><!-- / body - враппер экрана -->
+    </div><!-- / wrapper - враппер всех элементов -->
+</body>

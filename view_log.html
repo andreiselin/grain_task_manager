@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+
+    <meta charset="UTF-8">
+    <title>Статистика по чеклисту</title>
+
+
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/jquery_cookie.js"></script>
+
+
+    <script src="../scripts/global.js"></script>
+    <link href="../!_old/global.css" rel="stylesheet" type="text/css" />
+
+
+    <!--<script src="task.js"></script>-->
+    <link href="log.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+<div id="wrapper">
+
+    <!-- общая для всех экранов строка. здесь будут кнопки и значок оповещения -->
+    <div id="status_bar">
+
+    </div>
+
+    <!-- враппер текущего экрана -->
+    <div id="body">
+        <div class="body_block">
+            <h1>Журнал действий</h1>
+            <div class="breaker"></div>
+            <div id="log_filter_form">
+                <div class="log_filter_form_line">
+                    <span class="small">Фильтровать по:</span>
+                </div>
+                <div class="log_filter_form_line">
+                    Пользователю: <input type="text" value="" placeholder="Начните вводить имя" />
+                </div>
+                <div class="log_filter_form_line">
+                    Типу действия:
+                    <select>
+                        <option>Заступил на работу</option>
+                        <option>Создал задачу</option>
+                        <option>Написал комментарий к задаче</option>
+                        <option>Завершил задачу</option>
+                        <option>Заполнил чеклист</option>
+                        <option>Завершил работу</option>
+                    </select>
+                </div>
+                <div class="log_filter_form_line">
+                    Времени: с
+                    <input type="text" value="" placeholder="Дата" />
+                    по
+                    <input type="text" value="" placeholder="Дата" />
+                    <span class="button">Сегодня</span>
+                    <span class="button">Вчера</span>
+                </div>
+                <div class="log_filter_form_line">
+                    <span class="button">Фильтровать</span>
+                </div>
+            </div>
+        </div>
+        <div class="body_block_header">Журнал:</div>
+        <div class="body_block">
+
+
+
+            <table class="small grain_table">
+                <thead>
+                    <tr>
+                        <td>Пользователь</td>
+                        <td>Действие</td>
+                        <td>Дата</td>
+                        <td>Время</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="сортировать по этому юзеру">Иннокентий Смоктуновский</a></td>
+                        <td><a href="сортировать по этой задаче">Заступил на работу</a></td>
+                        <td><a href="сортировать по этой дате">12.03.2014</a></td>
+                        <td>09:00</td>
+                    </tr>
+                    <tr>
+                        <td><a href="сортировать по этому юзеру">Иннокентий Смоктуновский</a></td>
+                        <td><a href="сортировать по этой задаче">Заступил на работу</a></td>
+                        <td><a href="сортировать по этой дате">13.03.2014</a></td>
+                        <td>08:43</td>
+                    </tr>
+                    <tr>
+                        <td><a href="сортировать по этому юзеру">Иннокентий Смоктуновский</a></td>
+                        <td><a href="сортировать по этой задаче">Прокомментировал задачу</a>
+                            <br />
+                            <!-- ссфлка на просмотр этой задачи -->
+                            <span class="button">Открытие фонтанов</span></td>
+                        <td><a href="сортировать по этой дате">14.03.2014</a></td>
+                        <td>08:57</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                1, <span class="button">2</span>
+            </div>
+
+        </div>
+    </div><!-- / body - враппер экрана -->
+</div><!-- / wrapper - враппер всех элементов -->
+</body>
+</html>

@@ -1,0 +1,230 @@
+<link href="css/view_task.css" rel="stylesheet" type="text/css" />
+<div ng-show="show_load" id="loading_plane"><div id="loading_label" class="big">Загрузка</div></div>
+<div id="wrapper">
+
+<!-- общая для всех экранов строка. здесь будут кнопки и значок оповещения -->
+<div id="status_bar" ng-include="'status_bar.html'">
+
+</div>
+
+<!-- враппер текущего экрана -->
+<div id="body">
+<div id="task" class="body_block">
+
+
+
+    <!-- ЗАГОЛОВОК -->
+
+    <h1>
+        {{task.title}}
+    </h1>
+
+
+    <!-- если текущий пользователь - менеджер, т.е. user.role == 2 - делаем ссылку на страницу task_list, отсортированную по указанному пользователю -->
+    <!-- ИМЯ ОТВЕТСТВЕННОГО ЗА ВЫПОЛНЕНИЕ ЗАДАЧИ, может быть пустым ( = "не назначен") -->
+    <div id="task_responsible">
+        <span ng-repeat="user in users|filter:{id:task.responsible}">
+            <span class="small">Ответственный:</span><br /><a ng-href="#/task_list?user_id={{user.id}}">{{user.first_name}} {{user.last_name}}</a>
+        </span>
+        <!--<span class="small">Ответственный:</span><br /><a href="ссылка для менеджера">{{task.responsible_name}}</a>-->
+    </div><div id="task_initiator">
+        <!-- ИМЯ ИНИЦИАТОРА -->
+        <span ng-repeat="user in users|filter:{id:task.initiator}">
+                <span class="small">Инициатор:</span><br /><a ng-href="#/task_list?user_id={{user.id}}">{{user.first_name}} {{user.last_name}}</a>
+            </span>
+        <!--<span class="small">Инициатор:</span><br /><a href="ссылка для менеджера">{{task.initiator_name}}</a>-->
+    </div><div id="task_notified_users">
+    <!-- СПИСОК ПОЛЬЗОВАТЕЛЕЙ, отмеченных для оповещения о создании этой задачи -->
+    <!-- если пользователь - менеджер, делаем ссылку на страницу task_list, отсортированную по этому пользователю -->
+        <span class="small">Оповещены:</span><br />
+        <a href="ссылка для менеджера" ng-repeat="user in users|map:task.notified">
+            <span class="task_notified_user">{{user.first_name}} {{user.last_name}}</span><span ng-if="!$last">,</span></span></a>
+    </div>
+
+
+
+
+    <div id="task_content_wrapper">
+
+        <!-- ТЕКСТОВОЕ ОПИСАНИЕ ЗАДАЧИ, контент -->
+        <div id="task_content">
+            {{task.content}}
+        </div>
+
+        <!-- ИЗОБРАЖЕНИЕ, прикрепленное к задаче -->
+        <div id="task_picture" ng-hide="!task.img">
+            <!-- может быть пустым -->
+            <span class="small">Прикрепленное изображение:</span><br />
+            <img ng-src="images/pictures/{{task.img +'.jpg'}}"  />
+        </div>
+
+    </div>
+
+
+
+    <!-- ДАТА СОЗДАНИЯ -->
+    <div id="task_date_placed">
+        <span class="small">Дата создания:</span><br />
+        <div>{{task.time_placed|date:"MM.dd.yyyy"}}</div>
+        <span class="small">{{task.time_placed|date:"HH:mm"}}</span>
+        <!-- ДАТА ВЫПОЛНЕНИЯ -->
+        <!-- меняет класс в зависимости от того, превышен ли срок на данный момент -->
+    </div><div id="task_date_term" class="term_due / term_overdue">
+        <span class="small">Срок выполнения:</span><br />
+        <div>{{task.time_term|date:"MM.dd.yyyy"}}</div>
+        <span class="small">{{task.time_term|date:"HH:mm"}}</span>
+    </div>
+
+
+    <div ng-click="changeStatus()" ng-if="(current_user === task.responsible || current_user === task.initiator) && task.status !== '2'"  class='big_button'>Завершить задачу</div>
+
+
+
+</div>
+
+
+
+
+<!-- / конец задачи -->
+<!-- враппер комментариев -->
+
+
+<div class="body_block_header">Комментарии ({{task.comments.length || 0}})</div>
+
+
+<div id="task_comments" class="body_block">
+
+
+    <!-- здесь - надпись
+    Нет комментариев
+    если комментариев нет -->
+
+
+    <!-- враппер комментария -->
+    <div class="task_comment" ng-repeat="comment in task.comments">
+
+        <!-- аватар комментатора -->
+        <span ng-repeat="user in users|filter:{id:comment.author}">
+            <a href="ссылка для менеджера">
+                <div class="task_comment_user_pic">
+                    <img ng-src="images/users/{{user.img||'0.jpg'}}" />
+                    <!-- враппер текста -->
+                </div></a><div class="task_comment_text_wrapper">
+
+            <!-- Имя и фамилия комментатора -->
+
+            <div class="task_comment_line task_comment_user_name">
+                <a href="ссылка для менеджера"><span class="big">{{user.first_name}} {{user.last_name}}</span></a><br />
+            </div>
+        </span>
+
+
+        <!-- Содержание комментария -->
+        <div class="task_comment_line task_comment_content">
+            {{comment.content}}
+        </div>
+
+        <!-- Картинка - если есть -->
+        <div ng-if="comment.img" class="task_comment_line task_comment_picture">
+            <span class="small">Прикрепленное изображение:</span><br />
+            <img ng-src="images/pictures/{{comment.img+'.jpg'||'0.jpg'}}" />
+        </div>
+
+        <div class="task_comment_line small halftoned">
+            <!-- Дата и время публикации комментария -->
+            <div class="task_comment_placed">
+                {{comment.time_placed|date:"MM.dd.yyyy HH:mm"}}
+
+                  <!-- Пользователи с соответствующими ссылками для менеджера -->
+            </div><div class="task_comment_notified_users">
+                Оповещены:
+                <span ng-repeat="user in users|map:comment.notified">
+                    <a href="ссылка для менеджера">
+                        <span class="task_comment_notified_user">{{user.first_name}} {{user.last_name}}</span>
+                    </a>
+                    <span ng-if="!$last">,</span>
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- / закрыли враппер комментариев -->
+<!-- форма отправки комментария -->
+
+
+
+
+
+
+<div class="body_block_header">Добавить комментарий:</div>
+
+
+<div id="task_comment_form" class="body_block">
+
+    <span class="small">Вы вошли как:</span><br />
+
+    <span ng-repeat="user in users|filter:{id:current_user}">
+        <span class="big">{{user.first_name}} {{user.last_name}}</span>
+    </span>
+    <form name="newComment">
+
+        <div class="task_comment_form_line">
+            <textarea ng-model="coment.content" name="content" id="task_comment_form_textarea" placeholder="Содержание комментария"></textarea>
+        </div>
+
+
+        <!-- КАРТИНКА ДЛЯ ЗАГРУЗКИ -->
+        <div class="task_comment_form_line">
+            <label for="task_comment_form_image_upload_input">
+                <!--<span class="button">Добавить изображение</span>-->
+                <!--<input ng-model="img" name="img" type="file" id="task_comment_form_image_upload_input" />-->
+                <input id="task_comment_form_image_upload_input" type="file" ng-file-select="" ng-model="picFile" name="file" accept="image/*" ng-file-change="generateThumb(picFile[0], $files)" required="" />
+            </label>
+        </div>
+
+
+        <div id="task_comment_form_notify_wrapper" class="task_comment_form_line">
+            <!-- ИМЯ ПОЛЬЗОВАТЕЛЯ для добавления в список оповещаемых о комментарии -->
+            <!-- При наборе букв должны появляться похожие варианты для быстрого выбора -->
+            <span class="small">Кого нужно оповестить: </span><br />
+            <input ng-model="name" type="text" id="task_comment_user_to_notify_input" placeholder="Начните набирать имя пользователя" />
+            <span class="button">Ok</span>
+            <ul class="dropdown_list" ng-show="obj.length && name">
+                <li data-length="{{obj.length = $index+1}}"  ng-repeat="user in users|map:obj.commnetNotified:true|filter:name" ng-click="addNotified(user.id);">{{user.first_name}} {{user.last_name}}</li>
+            </ul>
+            <!-- СПИСОК ДЛЯ ОПОВЕЩЕНИЯ -->
+            <!-- необходимо исключить возможность вторичного попадания пользователя в этот список -->
+            <div class="task_comment_form_line">
+                <span class="small">Пользователи для оповещения:</span>
+                <div ng-repeat="user in users|map:obj.commnetNotified" class="task_comment_user_to_notify">
+
+                    <span class="button" ng-click="deleteNotified(user.id)">x</span><!-- при нажатии - удаление из списка -->
+                    {{user.first_name}} {{user.last_name}}
+                </div>
+            </div>
+        </div>
+
+        <div class="big_button" ng-click="sendComment()">Добавить комментарий</div>
+
+    </form>
+
+
+
+</div>
+
+
+<!-- закрыли враппер формы комментария -->
+
+
+</div><!-- / body - враппер экрана -->
+</div><!-- / wrapper - враппер всех элементов -->

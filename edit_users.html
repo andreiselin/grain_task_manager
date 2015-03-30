@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+
+    <meta charset="UTF-8">
+    <title>Операции с пользователями</title>
+
+
+
+
+    <!--<script src="task.js"></script>-->
+    <link href="css/users.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+<div id="wrapper">
+
+    <!-- общая для всех экранов строка. здесь будут кнопки и значок оповещения -->
+    <div id="status_bar">
+
+    </div>
+
+    <!-- враппер текущего экрана -->
+    <div id="body">
+        <div class="body_block">
+            <h1>Работа с пользователями и группами</h1>
+
+            <div class="breaker"></div>
+
+            <div id="users_user_operations_wrapper">
+                <div id="users_user_list">
+                    <div id="users_user_list_inside">
+                        <div class="users_user_list_item">+ Новый сотрудник</div>
+                        <div class="users_user_list_item">Иван Иванов</div>
+                        <div class="users_user_list_item">Феофан Грек</div>
+                    </div>
+                </div><div id="users_user_operations">
+                    <div id="users_user_operations_label" class="hidden">
+                        &larr; Выберите пользователя для редактирования или создайте нового
+                    </div>
+                    <div id="users_user_operations_form">
+
+
+                        <div class="user_operations_form_line">
+                            <span class="small">Имя</span>
+                            <input type="text" value="" placeholder="Имя пользователя" />
+                        </div>
+                        <div class="user_operations_form_line">
+                            <span class="small">Фамилия</span>
+                            <input type="text" value="" placeholder="Фамилия пользователя" />
+                        </div>
+                        <div class="user_operations_form_line">
+                            <span class="small">Аватар:</span>
+                            <img class="users_user_operations_avatar" src="../!_old/u/1.jpg" /><br />
+                            <input type="file" /><br/>
+                        </div>
+                        <div class="user_operations_form_line">
+                            <span class="small">Должность</span>
+                            <input type="text" value="" placeholder="Должность" />
+                        </div>
+                        <div class="user_operations_form_line">
+                            <span class="small">Роль</span>
+                            <select>
+                                <option value="1">Сотрудник</option>
+                                <option value="2">Менеджер</option>
+                                <option value="3">Директор</option>
+                            </select>
+                        </div>
+                        <div class="user_operations_form_line">
+                            <span class="small">Состояние</span>
+                            <select>
+                                <option value="0">Неактивен / уволен</option>
+                                <option value="1" selected>Активен</option>
+                            </select>
+                        </div>
+                        <div class="user_operations_form_line">
+                            <span class="button">Сохранить</span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="body_block_header">Группы</div>
+        <div class="body_block">
+            <div id="users_group_operations_wrapper">
+                <div id="users_group_list">
+                    <div id="users_group_list_inside">
+                        <div class="users_group_list_item">+ Новая группа</div>
+                        <div class="users_group_list_item">Техники по отоплению</div>
+                        <div class="users_group_list_item">Смена уборщиков 1-го этажа</div>
+                    </div>
+                </div><div id="users_group_operations">
+                <div id="users_group_operations_label" class="hidden">
+                    &larr; Выберите группу для редактирования или создайте новую
+                </div>
+                <div id="users_group_operations_form">
+
+                    <div class="user_operations_form_line">
+                        <span class="small">Название</span>
+                        <input type="text" value="" placeholder="Название группы" />
+                    </div>
+                    <div class="user_operations_form_line">
+                        <span class="small">Аватар:</span>
+                        <img class="users_user_operations_avatar" src="../!_old/u/1.jpg" /><br />
+                        <input type="file" />
+                    </div>
+                    <div class="user_operations_form_line">
+                        <span class="small">Добавить участника</span>
+                        <input type="text" value="" placeholder="Начните набирать имя" /> <span class="button">ok</span>
+                    </div>
+                    <div class="user_operations_form_line">
+                        <span class="small">Имеющиеся участники</span><br />
+                        <div id="users_group_members_wrapper">
+                            <ul id="users_group_members">
+                                <li><span class="button">x</span> Иван Петров</li>
+                                <li><span class="button">x</span> Петр Седов</li>
+                                <li><span class="button">x</span> Иннокентий Смоктуновский</li>
+                                <li><span class="button">x</span> Петр Первый</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="user_operations_form_line">
+                        <span class="small">Состояние</span>
+                        <select>
+                            <option value="0">Неактивна / распущена</option>
+                            <option value="1" selected>Активен</option>
+                        </select>
+                    </div>
+                    <div class="user_operations_form_line">
+                        <span class="button">Сохранить</span>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div><!-- / body - враппер экрана -->
+</div><!-- / wrapper - враппер всех элементов -->
+</body>
+</html>

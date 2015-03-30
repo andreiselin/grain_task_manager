@@ -1,0 +1,116 @@
+[09-Jan-2015 05:50:34 Asia/Almaty] PHP Fatal error:  Call to undefined function set_timestamp() in /home/webinaro/public_html/php/add_new_task.php on line 6
+[09-Jan-2015 05:50:43 Asia/Almaty] PHP Fatal error:  Call to undefined function set_timestamp() in /home/webinaro/public_html/php/add_new_task.php on line 6
+[09-Jan-2015 05:56:23 Asia/Almaty] PHP Fatal error:  Uncaught exception 'Exception' with message 'DateTime::__construct(): Failed to parse time string (1420761165) at position 8 (6): Unexpected character' in /home/webinaro/public_html/php/init.php:21
+Stack trace:
+#0 /home/webinaro/public_html/php/init.php(21): DateTime->__construct('1420761165')
+#1 /home/webinaro/public_html/php/add_new_task.php(6): grain_timestamp('1420761165', 'n')
+#2 {main}
+  thrown in /home/webinaro/public_html/php/init.php on line 21
+[09-Jan-2015 05:56:24 Asia/Almaty] PHP Fatal error:  Uncaught exception 'Exception' with message 'DateTime::__construct(): Failed to parse time string (1420761165) at position 8 (6): Unexpected character' in /home/webinaro/public_html/php/init.php:21
+Stack trace:
+#0 /home/webinaro/public_html/php/init.php(21): DateTime->__construct('1420761165')
+#1 /home/webinaro/public_html/php/add_new_task.php(6): grain_timestamp('1420761165', 'n')
+#2 {main}
+  thrown in /home/webinaro/public_html/php/init.php on line 21
+[09-Jan-2015 01:21:31 Europe/Amsterdam] PHP Fatal error:  Call to undefined function grain_timestamp() in /home/webinaro/public_html/php/add_new_task.php on line 6
+[09-Jan-2015 01:23:46 Europe/Amsterdam] PHP Fatal error:  Uncaught exception 'Exception' with message 'DateTime::__construct() expects parameter 2 to be DateTimeZone, string given' in /home/webinaro/public_html/php/init.php:24
+Stack trace:
+#0 /home/webinaro/public_html/php/init.php(24): DateTime->__construct('', 'Asia/Almaty')
+#1 /home/webinaro/public_html/php/add_new_task.php(6): date_ltg(NULL)
+#2 {main}
+  thrown in /home/webinaro/public_html/php/init.php on line 24
+[09-Jan-2015 01:24:36 Europe/Amsterdam] PHP Fatal error:  Uncaught exception 'Exception' with message 'DateTime::__construct() expects parameter 2 to be DateTimeZone, string given' in /home/webinaro/public_html/php/init.php:24
+Stack trace:
+#0 /home/webinaro/public_html/php/init.php(24): DateTime->__construct('', 'Asia/Almaty')
+#1 /home/webinaro/public_html/php/add_new_task.php(6): date_ltg(NULL)
+#2 {main}
+  thrown in /home/webinaro/public_html/php/init.php on line 24
+[09-Jan-2015 01:24:50 Europe/Amsterdam] PHP Fatal error:  Uncaught exception 'Exception' with message 'DateTime::__construct() expects parameter 2 to be DateTimeZone, string given' in /home/webinaro/public_html/php/init.php:24
+Stack trace:
+#0 /home/webinaro/public_html/php/init.php(24): DateTime->__construct('', 'Asia/Almaty')
+#1 /home/webinaro/public_html/php/add_new_task.php(6): date_ltg(NULL)
+#2 {main}
+  thrown in /home/webinaro/public_html/php/init.php on line 24
+[09-Jan-2015 01:25:24 Europe/Amsterdam] PHP Fatal error:  Uncaught exception 'Exception' with message 'DateTime::__construct() expects parameter 2 to be DateTimeZone, string given' in /home/webinaro/public_html/php/init.php:24
+Stack trace:
+#0 /home/webinaro/public_html/php/init.php(24): DateTime->__construct('', 'Asia/Almaty')
+#1 /home/webinaro/public_html/php/add_new_task.php(6): date_ltg(NULL)
+#2 {main}
+  thrown in /home/webinaro/public_html/php/init.php on line 24
+[09-Jan-2015 01:28:15 Europe/Amsterdam] PHP Catchable fatal error:  Object of class DateTime could not be converted to string in /home/webinaro/public_html/php/add_new_task.php on line 6
+[10-Jan-2015 08:38:28 Europe/Amsterdam] PHP Warning:  imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error:  in /home/webinaro/public_html/php/save_picture.php on line 17
+[10-Jan-2015 08:38:28 Europe/Amsterdam] PHP Warning:  imagecreatefromjpeg(): '/tmp/phpo0tMKU' is not a valid JPEG file in /home/webinaro/public_html/php/save_picture.php on line 17
+[10-Jan-2015 08:38:29 Europe/Amsterdam] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in /home/webinaro/public_html/php/save_picture.php on line 40
+[10-Jan-2015 09:42:20 Europe/Amsterdam] PHP Warning:  imagecreatefromjpeg(): gd-jpeg: JPEG library reports unrecoverable error:  in /home/webinaro/public_html/php/save_picture.php on line 17
+[10-Jan-2015 09:42:20 Europe/Amsterdam] PHP Warning:  imagecreatefromjpeg(): '/tmp/phpp3zcxx' is not a valid JPEG file in /home/webinaro/public_html/php/save_picture.php on line 17
+[10-Jan-2015 09:42:20 Europe/Amsterdam] PHP Warning:  imagecopyresampled() expects parameter 2 to be resource, boolean given in /home/webinaro/public_html/php/save_picture.php on line 40
+[12-Jan-2015 16:14:02 Europe/Amsterdam] PHP Fatal error:  Uncaught exception 'Exception' with message 'DateTime::__construct(): Failed to parse time string (2015-01-15 04:10:00 2015-01-15 04:10:00:2015-01-15 04:10:00:00) at position 20 (2): Double date specification' in /home/webinaro/public_html/php/init.php:24
+Stack trace:
+#0 /home/webinaro/public_html/php/init.php(24): DateTime->__construct('2015-01-15 04:1...', Object(DateTimeZone))
+#1 /home/webinaro/public_html/php/edit_task.php(24): date_ltg('2015-01-15 04:1...')
+#2 {main}
+  thrown in /home/webinaro/public_html/php/init.php on line 24
+[12-Jan-2015 16:14:55 Europe/Amsterdam] PHP Fatal error:  Uncaught exception 'Exception' with message 'DateTime::__construct(): Failed to parse time string (2015-01-15 04:10:00 2015-01-15 04:10:00:2015-01-15 04:10:00:00) at position 20 (2): Double date specification' in /home/webinaro/public_html/php/init.php:24
+Stack trace:
+#0 /home/webinaro/public_html/php/init.php(24): DateTime->__construct('2015-01-15 04:1...', Object(DateTimeZone))
+#1 /home/webinaro/public_html/php/edit_task.php(24): date_ltg('2015-01-15 04:1...')
+#2 {main}
+  thrown in /home/webinaro/public_html/php/init.php on line 24
+[12-Jan-2015 16:38:36 Europe/Amsterdam] PHP Fatal error:  Uncaught exception 'Exception' with message 'DateTime::__construct(): Failed to parse time string (1421077116) at position 7 (1): Unexpected character' in /home/webinaro/public_html/php/init.php:24
+Stack trace:
+#0 /home/webinaro/public_html/php/init.php(24): DateTime->__construct('1421077116', Object(DateTimeZone))
+#1 /home/webinaro/public_html/php/change_user_state.php(39): date_ltg(1421077116)
+#2 {main}
+  thrown in /home/webinaro/public_html/php/init.php on line 24
+[15-Jan-2015 15:50:21 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:50:28 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:50:35 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:50:51 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:51:10 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:51:12 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:51:21 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:51:24 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:51:25 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:51:47 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:52:02 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[15-Jan-2015 15:52:23 Europe/Amsterdam] PHP Fatal error:  Call to undefined function unix_time() in /home/webinaro/public_html/php/view_task.php on line 16
+[19-Jan-2015 06:10:14 Europe/Amsterdam] PHP Warning:  date_format() expects parameter 1 to be DateTime, string given in /home/webinaro/public_html/php/init.php on line 44
+[19-Jan-2015 06:56:46 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/view_task.php on line 27 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 06:56:46 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/view_task.php on line 27 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 06:57:07 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/view_task.php on line 27 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 06:57:07 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/view_task.php on line 27 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 06:57:48 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/view_task.php on line 27 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 06:57:48 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/view_task.php on line 27 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:13:39 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:27:04 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:27:04 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:27:11 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:27:11 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:27:20 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:27:20 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:27:31 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:27:31 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:27:41 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:27:41 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:28:17 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:28:17 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:28:24 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:28:24 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:28:46 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:28:46 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:32:43 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:32:43 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:32:45 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:32:45 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:33:36 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:33:36 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:33:59 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:33:59 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:34:00 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:34:00 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:34:02 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:34:02 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:34:04 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:34:04 Europe/Amsterdam] PHP Warning:  Missing argument 2 for date_gtl(), called in /home/webinaro/public_html/php/init.php on line 320 and defined in /home/webinaro/public_html/php/init.php on line 25
+[19-Jan-2015 07:34:23 Europe/Amsterdam] PHP Fatal error:  Call to undefined function get_tasks() in /home/webinaro/public_html/php/profile.php on line 11
+[19-Jan-2015 07:34:24 Europe/Amsterdam] PHP Parse error:  syntax error, unexpected end of file, expecting ',' or ')' in /home/webinaro/public_html/php/init.php on line 270

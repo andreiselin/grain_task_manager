@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+
+    <meta charset="UTF-8">
+    <title>Чеклист</title>
+
+
+    <script src="../scripts/angular.js"></script>
+    <script src="../scripts/jquery.js"></script>
+    <script src="../scripts/jquery_cookie.js"></script>
+
+
+    <script src="../scripts/global.js"></script>
+    <link href="../!_old/global.css" rel="stylesheet" type="text/css" />
+
+
+    <!--<script src="task.js"></script>-->
+    <link href="check_list.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+<div id="wrapper">
+
+    <!-- общая для всех экранов строка. здесь будут кнопки и значок оповещения -->
+    <div id="status_bar">
+
+    </div>
+
+    <!-- враппер текущего экрана -->
+    <div id="body">
+        <div class="body_block">
+            <h1 id="check_list_header">Сортировка задач</h1>
+
+            <div class="breaker"></div>
+
+
+            <table class="grain_table">
+                <thead>
+                    <tr>
+                        <td>Пункт</td>
+                        <td>Отметка</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Готовность принятия олимпиады</td>
+                        <td>
+                            <span class="button">1</span>
+                            <span class="button">2</span>
+                            <span class="button">3</span>
+                            <span class="button">4</span>
+                            <span class="button">5</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Настройка всех инструментов</td>
+                        <td>
+                            <span class="button">1</span>
+                            <span class="button">2</span>
+                            <span class="button">3</span>
+                            <span class="button">4</span>
+                            <span class="button">5</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Клапаны выкручены в положение 10</td>
+                        <td>
+                            <span class="button">1</span>
+                            <span class="button">2</span>
+                            <span class="button">3</span>
+                            <span class="button">4</span>
+                            <span class="button">5</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <div class="breaker"></div>
+
+            <div class="big_button">Сохранить</div>
+
+        </div>
+    </div><!-- / body - враппер экрана -->
+</div><!-- / wrapper - враппер всех элементов -->
+</body>
+</html>
